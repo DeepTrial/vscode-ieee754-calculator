@@ -49,6 +49,7 @@ class IEEE {
       this.val = new Fraction(0);
     this.nan = false;
     this.inf = false;
+    this.updateBits();
   }
 
   // checks if object represents zero (positive or negative)

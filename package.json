@@ -33,6 +33,7 @@
   "scripts": {
     "build": "node esbuild.js",
     "watch": "node esbuild.js --watch",
+    "test:engine": "node esbuild.js --test",
     "test": "node ./out/test/runTest.js",
     "package": "vsce package"
   },
