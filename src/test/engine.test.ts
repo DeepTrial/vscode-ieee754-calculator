@@ -403,7 +403,7 @@ suite("Signed zero behavior");
 
   // 0 + -0 = 0 (positive)
   const posNegZero = addThem(posZero, negZero);
-  assert(posNegZero.isZero(), "0 + -0 is zero");
+  assert(posNegZero.isZero() && !posNegZero.minus, "0 + -0 is positive zero");
 })();
 
 // ============================================================
