@@ -6,3 +6,6 @@ tsconfig.json
 esbuild.js
 **/*.ts
 **/*.map
+.claude/**
+docs/**
+.gitignore
