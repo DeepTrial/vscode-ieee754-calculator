@@ -558,6 +558,6 @@ function decimalString(minus: boolean, exp: number, digits: number[]): string {
 }
 
 // default
-IEEE.switchBitSize(64);
+IEEE.switchBitSize(32);
 
 export default IEEE;

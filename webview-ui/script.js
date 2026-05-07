@@ -2,7 +2,7 @@
   const vscode = acquireVsCodeApi();
 
   let state = {
-    format: 64,
+    format: 32,
     a: { value: "0.0", parsed: null },
     b: { value: "0.0", parsed: null },
     result: { value: "0.0", parsed: null },
