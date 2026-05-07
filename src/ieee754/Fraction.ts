@@ -195,7 +195,7 @@ export function fractionTimesPower2(val: bigint, exp: number): Fraction {
 // (can be a BigInt) which is assumed to be positive
 function intLog10(n: bigint): number {
   const s = n.toString(10);
-  return s.length + Math.log10(`0.${s.substring(0, 15)}`);
+  return s.length + Math.log10(Number(`0.${s.substring(0, 15)}`));
 }
 
 // returns a rough approximation of the binary logarithm of an integer
