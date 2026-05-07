@@ -4,6 +4,8 @@
   "description": "IEEE 754 floating-point converter with arithmetic operations",
   "version": "0.0.1",
   "publisher": "karl",
+  "extensionKind": ["desktop"],
+  "keywords": ["ieee754", "floating-point", "converter", "binary", "hex"],
   "engines": {
     "vscode": "^1.85.0"
   },
