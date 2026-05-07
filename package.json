@@ -29,7 +29,7 @@
         {
           "id": "ieee754",
           "title": "IEEE 754",
-          "icon": "$(symbol-number)"
+          "icon": "icon.svg"
         }
       ]
     },
