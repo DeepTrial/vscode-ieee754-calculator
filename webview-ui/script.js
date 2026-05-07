@@ -5,7 +5,7 @@
     format: 64,
     a: { value: "0.0", parsed: null },
     b: { value: "0.0", parsed: null },
-    result: null,
+    result: { value: "0.0", parsed: null },
   };
 
   const formatLabels = { 16: "binary16", 32: "binary32", 64: "binary64", 128: "binary128" };
@@ -43,7 +43,7 @@
 
       <div class="section">
         <div class="section-label">Result</div>
-        ${state.result ? renderResultRow(state.result) : renderEmptyResult()}
+        ${renderValueRow("result", state.result)}
       </div>
     `;
 
@@ -104,50 +104,6 @@
     `;
   }
 
-  function renderResultRow(r) {
-    if (r.nan) {
-      return `<div class="value-row result"><div class="decimal-value">NaN</div><div class="bits-row"><span class="bits-label">Sign</span><span class="bits-value">${renderBit("1", "sign")}</span></div></div>`;
-    }
-    if (r.inf) {
-      return `<div class="value-row result"><div class="decimal-value">${r.decimalValue}</div><div class="bits-row"><span class="bits-label">Sign</span><span class="bits-value">${renderBit(r.sign, "sign")}</span></div></div>`;
-    }
-    return `
-      <div class="value-row result">
-        <div class="decimal-value">${r.decimalValue}</div>
-        <div class="bits-row">
-          <span class="bits-label">Sign</span>
-          <span class="bits-value">${renderBit(r.sign, "sign")}</span>
-        </div>
-        <div class="bits-row">
-          <span class="bits-label">Exponent</span>
-          <span class="bits-value">${renderBit(r.hiddenBit, "hidden")}${renderBitString(r.binary.slice(2, 2 + exponentBits()), "exponent")}</span>
-        </div>
-        <div class="bits-row">
-          <span class="bits-label">Significand</span>
-          <span class="bits-value">${renderBitString(r.binary.slice(2 + exponentBits()), "significand")}</span>
-        </div>
-        <div class="breakdown">
-          <div class="breakdown-item">
-            <span class="breakdown-label">Sign:</span>
-            <span class="breakdown-value sign">${r.signOut}${r.sign}</span>
-          </div>
-          <div class="breakdown-item">
-            <span class="breakdown-label">Exp:</span>
-            <span class="breakdown-value exponent">${r.expOut}</span>
-          </div>
-        </div>
-        <div class="output-row">
-          <span>${r.hex}</span>
-          <span>${r.binary}</span>
-        </div>
-      </div>
-    `;
-  }
-
-  function renderEmptyResult() {
-    return `<div class="value-row result"><div class="decimal-value" style="color:#808080">Select an operation</div></div>`;
-  }
-
   function renderBit(bit, cls) {
     return `<span class="bit ${cls}">${bit}</span>`;
   }
@@ -176,11 +132,14 @@
         if (state.b.value) {
           vscode.postMessage({ type: "inputChanged", payload: { row: "b", value: state.b.value, format: state.format } });
         }
+        if (state.result.value) {
+          vscode.postMessage({ type: "inputChanged", payload: { row: "result", value: state.result.value, format: state.format } });
+        }
         render();
       });
     });
 
-    ["a", "b"].forEach((id) => {
+    ["a", "b", "result"].forEach((id) => {
       const input = document.getElementById(`input-${id}`);
       if (input) {
         input.addEventListener("change", () => {
@@ -227,7 +186,8 @@
         render();
         break;
       case "updateResult":
-        state.result = message.payload;
+        state.result.parsed = message.payload;
+        state.result.value = message.payload.decimalValue;
         render();
         break;
     }
