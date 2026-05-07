@@ -1,0 +1,46 @@
+{
+  "name": "ieee754-converter",
+  "displayName": "IEEE 754 Converter",
+  "description": "IEEE 754 floating-point converter with arithmetic operations",
+  "version": "0.0.1",
+  "publisher": "karl",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ieee754",
+          "title": "IEEE 754",
+          "icon": "$(symbol-number)"
+        }
+      ]
+    },
+    "views": {
+      "ieee754": [
+        {
+          "type": "webview",
+          "id": "ieee754.converter",
+          "name": "Converter"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.20.0",
+    "@vscode/test-electron": "^2.3.8",
+    "typescript": "^5.3.0"
+  }
+}
