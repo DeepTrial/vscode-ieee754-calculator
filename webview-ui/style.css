@@ -1,0 +1,236 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  color: #d4d4d4;
+  background: #1e1e1e;
+  line-height: 1.5;
+}
+
+#app {
+  padding: 8px 12px;
+}
+
+.section {
+  margin-bottom: 12px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #858585;
+  margin-bottom: 6px;
+}
+
+/* Format buttons */
+.format-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.format-btn {
+  flex: 1;
+  padding: 5px 8px;
+  background: #2d2d30;
+  color: #d4d4d4;
+  border: 1px solid #3c3c3c;
+  border-radius: 3px;
+  font-size: 11px;
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.format-btn:hover {
+  background: #3e3e42;
+}
+
+.format-btn.active {
+  background: #264f78;
+  border-color: #264f78;
+  color: #ffffff;
+}
+
+/* Value row */
+.value-row {
+  background: #252526;
+  border: 1px solid #3c3c3c;
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+.value-row.result {
+  border-color: #264f78;
+}
+
+/* Input row */
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.input-row label {
+  font-size: 11px;
+  color: #858585;
+  min-width: 36px;
+}
+
+.input-row input {
+  flex: 1;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  border: 1px solid #3c3c3c;
+  border-radius: 3px;
+  padding: 3px 6px;
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+  font-size: 13px;
+  outline: none;
+}
+
+.input-row input:focus {
+  border-color: #007acc;
+}
+
+/* Decimal value */
+.decimal-value {
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+  font-size: 13px;
+  color: #d4d4d4;
+  margin-bottom: 6px;
+}
+
+/* Bits row */
+.bits-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.bits-label {
+  font-size: 11px;
+  color: #858585;
+  min-width: 64px;
+  text-align: right;
+}
+
+.bits-value {
+  display: flex;
+  gap: 1px;
+  flex-wrap: wrap;
+}
+
+/* Bit cells */
+.bit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 18px;
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+  font-size: 11px;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.bit.sign {
+  background: rgba(209, 105, 105, 0.2);
+  color: #d16969;
+}
+
+.bit.exponent {
+  background: rgba(206, 145, 120, 0.2);
+  color: #ce9178;
+}
+
+.bit.significand {
+  background: rgba(86, 156, 214, 0.2);
+  color: #569cd6;
+}
+
+.bit.hidden {
+  background: rgba(128, 128, 128, 0.2);
+  color: #808080;
+}
+
+/* Breakdown */
+.breakdown {
+  display: flex;
+  gap: 16px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
+.breakdown-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.breakdown-label {
+  font-size: 11px;
+  color: #858585;
+}
+
+.breakdown-value {
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+  font-size: 12px;
+}
+
+.breakdown-value.sign {
+  color: #d16969;
+}
+
+.breakdown-value.exponent {
+  color: #ce9178;
+}
+
+/* Output row */
+.output-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+  font-size: 11px;
+  color: #858585;
+}
+
+/* Arithmetic panel */
+.arithmetic-panel {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.arith-btn {
+  width: 40px;
+  height: 32px;
+  background: #2d2d30;
+  color: #d4d4d4;
+  border: 1px solid #3c3c3c;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arith-btn:hover {
+  background: #3e3e42;
+}
+
+.arith-btn:active {
+  background: #264f78;
+}
