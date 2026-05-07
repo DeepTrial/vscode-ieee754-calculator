@@ -194,4 +194,12 @@
   });
 
   render();
+
+  // Parse initial values on startup
+  ["a", "b", "result"].forEach((id) => {
+    vscode.postMessage({
+      type: "inputChanged",
+      payload: { row: id, value: state[id].value, format: state.format },
+    });
+  });
 })();
