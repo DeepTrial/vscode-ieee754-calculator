@@ -1,5 +1,5 @@
 {
-  "name": "ieee754-converter",
+  "name": "ieee754-calculator",
   "displayName": "IEEE 754 Converter",
   "description": "IEEE 754 floating-point converter with arithmetic operations",
   "version": "0.0.1",

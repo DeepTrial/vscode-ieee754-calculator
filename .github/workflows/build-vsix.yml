@@ -1,0 +1,57 @@
+name: Build VSIX
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Git tag to build (leave empty for latest commit)"
+        required: false
+        type: string
+
+jobs:
+  build:
+    name: Build and package VSIX
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.inputs.tag_name || github.ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run build
+
+      - name: Package VSIX
+        run: npm run package
+
+      - name: Rename VSIX
+        run: |
+          VSIX_FILE=$(ls *.vsix | head -1)
+          cp "$VSIX_FILE" ieee754-calculator.vsix
+
+      - name: Upload VSIX artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ieee754-calculator-vsix
+          path: ieee754-calculator.vsix
+          retention-days: 30
+
+      - name: Create Release (if tag)
+        if: ${{ github.event.inputs.tag_name != '' }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag_name }}
+          files: ieee754-calculator.vsix
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
