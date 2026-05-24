@@ -8,4 +8,5 @@ esbuild.js
 **/*.map
 .claude/**
 docs/**
+releases/**
 .gitignore
